@@ -25,7 +25,6 @@ int main (int argc, const char * argv[]) {
 		
 		// Create a new instance of LotteryEntry
 		LotteryEntry *newEntry = [[LotteryEntry alloc] init];
-		[newEntry prepareRandomNumbers];
 		[newEntry setEntryDate:iWeeksFromNow];
 		
 		// Add the LotteryEntry object to the array
