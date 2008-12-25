@@ -1,0 +1,18 @@
+# Ignore Finder's .DS_Store files
+.DS_Store
+
+# Ignore Xcode's user settings
+*.mode1v3
+*.mode2v3
+*.pbxuser
+*.perspectivev3
+
+# Ignore TextMate build errors
+*.tm_build_errors
+
+# Ignore temporary files
+*.swp
+*~.nib
+
+# And finally ignore the whole build directory
+build
