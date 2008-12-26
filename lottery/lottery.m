@@ -36,5 +36,6 @@ int main (int argc, const char * argv[]) {
 	}
 	
     [pool drain];
+	NSLog(@"GC = %@", [NSGarbageCollector defaultCollector]);
     return 0;
 }
