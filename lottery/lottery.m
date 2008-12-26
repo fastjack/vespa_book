@@ -29,11 +29,15 @@ int main (int argc, const char * argv[]) {
 		// Add the LotteryEntry object to the array
 		[array addObject:newEntry];
 	}
+	// Done with 'now'
+	now = nil;
 	
 	for (LotteryEntry *entryToPrint in array) {
 		// Display its contents
 		NSLog(@"%@", entryToPrint);
 	}
+	// Done with 'array'
+	array = nil;
 	
     [pool drain];
 	NSLog(@"GC = %@", [NSGarbageCollector defaultCollector]);
