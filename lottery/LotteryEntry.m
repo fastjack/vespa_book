@@ -32,12 +32,9 @@
 
 - (NSString *)description
 {
-	NSString *result;
-	result = [[NSString alloc] initWithFormat:@"%@ = %d and %d",
+	return [NSString stringWithFormat:@"%@ = %d and %d",
 			  [entryDate descriptionWithCalendarFormat:@"%Y-%m-%d"],
 			  firstNumber, secondNumber];
-	[result autorelease];
-	return result;
 }
 
 - (id)initWithEntryDate:(NSCalendarDate *)theDate
