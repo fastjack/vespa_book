@@ -54,4 +54,11 @@
 {
 	return [self initWithEntryDate:[NSCalendarDate calendarDate]];
 }
+
+- (void)dealloc
+{
+	NSLog(@"deallocing %@", self);
+	[entryDate release];
+	[super dealloc];
+}
 @end
