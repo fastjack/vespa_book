@@ -18,4 +18,5 @@
 - (NSCalendarDate *)entryDate;
 - (int)firstNumber;
 - (int)secondNumber;
+- (id)initWithEntryDate:(NSCalendarDate *)theDate;
 @end

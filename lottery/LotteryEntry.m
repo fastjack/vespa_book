@@ -39,13 +39,19 @@
 	return result;
 }
 
-- (id)init
+- (id)initWithEntryDate:(NSCalendarDate *)theDate
 {
 	if (![super init])
 		return nil;
 	
+	entryDate = theDate;
 	firstNumber = random() % 100 + 1;
 	secondNumber = random() % 100 + 1;
 	return self;
+}
+
+- (id)init
+{
+	return [self initWithEntryDate:[NSCalendarDate calendarDate]];
 }
 @end
