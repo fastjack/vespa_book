@@ -33,8 +33,8 @@
 - (NSString *)description
 {
 	return [NSString stringWithFormat:@"%@ = %d and %d",
-			  [entryDate descriptionWithCalendarFormat:@"%Y-%m-%d"],
-			  firstNumber, secondNumber];
+			[[self entryDate] descriptionWithCalendarFormat:@"%Y-%m-%d"],
+			  [self firstNumber], [self secondNumber]];
 }
 
 - (id)initWithEntryDate:(NSCalendarDate *)theDate
