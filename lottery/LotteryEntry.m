@@ -36,6 +36,7 @@
 	result = [[NSString alloc] initWithFormat:@"%@ = %d and %d",
 			  [entryDate descriptionWithCalendarFormat:@"%Y-%m-%d"],
 			  firstNumber, secondNumber];
+	[result autorelease];
 	return result;
 }
 
