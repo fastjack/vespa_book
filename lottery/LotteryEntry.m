@@ -44,7 +44,7 @@
 	if (![super init])
 		return nil;
 	
-	entryDate = theDate;
+	entryDate = [theDate retain];
 	firstNumber = random() % 100 + 1;
 	secondNumber = random() % 100 + 1;
 	return self;
