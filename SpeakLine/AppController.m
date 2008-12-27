@@ -21,6 +21,7 @@
 	// Create a new instance of NSSpeechSynthesizer
 	// with the default voice.
 	speechSynth = [[NSSpeechSynthesizer alloc] initWithVoice:nil];
+	[speechSynth setDelegate:self];
 	return self;
 }
 
@@ -41,5 +42,11 @@
 {
 	NSLog(@"stopping");
 	[speechSynth stopSpeaking];
+}
+
+- (void)speechSynthesizer:(NSSpeechSynthesizer *)sender
+		didFinishSpeaking:(BOOL)complete
+{
+	NSLog(@"complete = %d", complete);
 }
 @end
