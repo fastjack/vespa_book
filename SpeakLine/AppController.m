@@ -36,6 +36,8 @@
 	}
 	[speechSynth startSpeakingString:string];
 	NSLog(@"Have started to say: %@", string);
+	[startButton setEnabled:NO];
+	[stopButton setEnabled:YES];
 }
 
 - (IBAction)stopIt:(id)sender
@@ -48,5 +50,7 @@
 		didFinishSpeaking:(BOOL)complete
 {
 	NSLog(@"complete = %d", complete);
+	[startButton setEnabled:YES];
+	[stopButton setEnabled:NO];
 }
 @end
