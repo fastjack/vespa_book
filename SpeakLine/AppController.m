@@ -65,6 +65,7 @@
 						  row:(int)row
 {
 	NSString *v = [voiceList objectAtIndex:row];
-	return v;
+	NSDictionary *dict = [NSSpeechSynthesizer attributesForVoice:v];
+	return [dict objectForKey:NSVoiceName];
 }
 @end
