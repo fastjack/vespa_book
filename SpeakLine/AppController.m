@@ -39,6 +39,7 @@
 	NSLog(@"Have started to say: %@", string);
 	[startButton setEnabled:NO];
 	[stopButton setEnabled:YES];
+	[tableView setEnabled:NO];
 }
 
 - (IBAction)stopIt:(id)sender
@@ -53,6 +54,7 @@
 	NSLog(@"complete = %d", complete);
 	[startButton setEnabled:YES];
 	[stopButton setEnabled:NO];
+	[tableView setEnabled:YES];
 }
 
 - (int)numberOfRowsInTableView:(NSTableView *)tv
@@ -67,5 +69,26 @@
 	NSString *v = [voiceList objectAtIndex:row];
 	NSDictionary *dict = [NSSpeechSynthesizer attributesForVoice:v];
 	return [dict objectForKey:NSVoiceName];
+}
+
+- (void)tableViewSelectionDidChange:(NSNotification *)notification
+{
+	int row = [tableView selectedRow];
+	if (row == -1) {
+		return;
+	}
+	NSString *selectedVoice = [voiceList objectAtIndex:row];
+	[speechSynth setVoice:selectedVoice];
+	NSLog(@"new voice = %@", selectedVoice);
+}
+
+- (void)awakeFromNib
+{
+	// When the table view appears on screen, the default voice
+	// should be selected
+	NSString *defaultVoice = [NSSpeechSynthesizer defaultVoice];
+	int defaultRow = [voiceList indexOfObject:defaultVoice];
+	[tableView selectRow:defaultRow byExtendingSelection:NO];
+	[tableView scrollRowToVisible:defaultRow];
 }
 @end
