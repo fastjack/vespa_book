@@ -88,7 +88,7 @@
 	// should be selected
 	NSString *defaultVoice = [NSSpeechSynthesizer defaultVoice];
 	int defaultRow = [voiceList indexOfObject:defaultVoice];
-	[tableView selectRow:defaultRow byExtendingSelection:NO];
+	[tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:defaultRow] byExtendingSelection:NO];
 	[tableView scrollRowToVisible:defaultRow];
 }
 @end
