@@ -48,4 +48,12 @@
 {
 	return [todoList objectAtIndex:row];
 }
+
+- (void)tableView:(NSTableView *)tv setObjectValue:(id)newValue
+				forTableColumn:(NSTableColumn *)tableColumn
+						   row:(int)row
+{
+	[todoList replaceObjectAtIndex:row withObject:newValue];
+	[tableView reloadData];
+}
 @end
