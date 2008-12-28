@@ -22,6 +22,7 @@
 	// with the default voice.
 	speechSynth = [[NSSpeechSynthesizer alloc] initWithVoice:nil];
 	[speechSynth setDelegate:self];
+	voiceList = [[NSSpeechSynthesizer availableVoices] retain];
 	return self;
 }
 
@@ -52,5 +53,18 @@
 	NSLog(@"complete = %d", complete);
 	[startButton setEnabled:YES];
 	[stopButton setEnabled:NO];
+}
+
+- (int)numberOfRowsInTableView:(NSTableView *)tv
+{
+	return [voiceList count];
+}
+
+- (id)tableView:(NSTableView *)tv
+	objectValueForTableColumn:(NSTableColumn *)tableColumn
+						  row:(int)row
+{
+	NSString *v = [voiceList objectAtIndex:row];
+	return v;
 }
 @end
