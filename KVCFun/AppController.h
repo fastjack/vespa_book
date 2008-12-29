@@ -12,7 +12,6 @@
 @interface AppController : NSObject {
 	int fido;
 }
-- (int)fido;
-- (void)setFido:(int)x;
+@property(readwrite, assign) int fido;
 - (IBAction)incrementFido:(id)sender;
 @end
