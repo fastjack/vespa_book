@@ -31,4 +31,10 @@
 	NSLog(@"-setFido: is called with %d", x);
 	fido = x;
 }
+
+- (IBAction)incrementFido:(id)sender
+{
+	fido++;
+	NSLog(@"fido is now %d", fido);
+}
 @end
