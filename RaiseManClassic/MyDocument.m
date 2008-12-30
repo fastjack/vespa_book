@@ -7,19 +7,87 @@
 //
 
 #import "MyDocument.h"
+#import "Person.h"
 
 @implementation MyDocument
 
 - (id)init
 {
-    self = [super init];
-    if (self) {
-    
-        // Add your subclass-specific initialization here.
-        // If an error occurs here, send a [self release] message and return nil.
-    
-    }
-    return self;
+	[super init];
+	employees = [[NSMutableArray alloc] init];
+	return self;
+}
+
+- (void)dealloc
+{
+	[employees release];
+	[super dealloc];
+}
+
+#pragma mark Action methods
+
+- (IBAction)removeSelectedEmployees:(id)sender
+{
+	// Which row is selected?
+	NSIndexSet *rows = [tableView selectedRowIndexes];
+	
+	// Is the selection empty?
+	if ([rows count] == 0) {
+		NSBeep();
+		return;
+	}
+	[employees removeObjectsAtIndexes:rows];
+	[tableView reloadData];
+}
+
+- (IBAction)createEmployee:(id)sender
+{
+	Person *newEmployee = [[Person alloc] init];
+	[employees addObject:newEmployee];
+	[newEmployee release];
+	[tableView reloadData];
+}
+
+#pragma mark Table view dataSource methods
+
+- (int)numberOfRowsInTableView:(NSTableView *)aTableView
+{
+	return [employees count];
+}
+
+- (id)tableView:(NSTableView *)aTableView
+		objectValueForTableColumn:(NSTableColumn *)aTableColumn
+							  row:(int)rowIndex
+{
+	// What is the identifier for the column?
+	NSString *identifier = [aTableColumn identifier];
+	
+	// What person?
+	Person *person = [employees objectAtIndex:rowIndex];
+	
+	// What is the value of the attribute names identifier
+	return [person valueForKey:identifier];
+}
+
+- (void)tableView:(NSTableView *)aTableView
+   setObjectValue:(id)anObject
+   forTableColumn:(NSTableColumn *)aTableColumn
+			  row:(int)rowIndex
+{
+	NSString *identifier = [aTableColumn identifier];
+	Person *person = [employees objectAtIndex:rowIndex];
+	
+	// Set the value for the attribute names identifier
+	[person setValue:anObject forKey:identifier];
+}
+
+// Luckily Aaron provides an example on p. 135 :)
+- (void)tableView:(NSTableView *)tv
+	sortDescriptorsDidChange:(NSArray *)oldDescriptors
+{
+	NSArray *newDescriptors = [tv sortDescriptors];
+	[employees sortUsingDescriptors:newDescriptors];
+	[tv reloadData];
 }
 
 - (NSString *)windowNibName
