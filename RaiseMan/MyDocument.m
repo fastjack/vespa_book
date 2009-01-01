@@ -7,6 +7,7 @@
 //
 
 #import "MyDocument.h"
+#import "Person.h"
 
 @implementation MyDocument
 
@@ -33,6 +34,35 @@
 	[a retain];
 	[employees release];
 	employees = a;
+}
+
+- (void)insertObject:(Person *)p inEmployeesAtIndex:(int)index
+{
+	NSLog(@"addint %@ to %@", p, employees);
+	// Add the inverse of this operation to the undo stack
+	NSUndoManager *undo = [self undoManager];
+	[[undo prepareWithInvocationTarget:self]
+		removeObjectFromEmployeesAtIndex:index];
+	if (![undo isUndoing]) {
+		[undo setActionName:@"Insert Person"];
+	}
+	// Add the Person to the array
+	[employees insertObject:p atIndex:index];
+}
+
+- (void)removeObjectFromEmployeesAtIndex:(int)index
+{
+	Person *p = [employees objectAtIndex:index];
+	NSLog(@"removing %@ from %@", p, employees);
+	// Add the inverse of this operation to the undo stack
+	NSUndoManager *undo = [self undoManager];
+	[[undo prepareWithInvocationTarget:self] insertObject:p
+												  inEmployeesAtIndex:index];
+	if (![undo isUndoing]) {
+		[undo setActionName:@"Delete Person"];
+	}
+	
+	[employees removeObjectAtIndex:index];
 }
 
 - (NSString *)windowNibName
