@@ -106,7 +106,7 @@
 - (void)startObservingPerson:(Person *)person
 {
 	[person addObserver:self forKeyPath:@"personName" options:NSKeyValueObservingOptionOld context:NULL];
-	[person addObserver:self forKeyPath:@"exprectedRaise" options:NSKeyValueObservingOptionOld context:NULL];
+	[person addObserver:self forKeyPath:@"expectedRaise" options:NSKeyValueObservingOptionOld context:NULL];
 }
 
 - (void)stopObservingPerson:(Person *)person
