@@ -8,7 +8,7 @@
 		<string key="IBDocument.HIToolboxVersion">353.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="100024"/>
+			<integer value="6"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -163,7 +163,9 @@
 																<object class="NSMutableArray" key="dict.sortedKeys">
 																	<bool key="EncodedWithXMLCoder">YES</bool>
 																	<string>allowsFloats</string>
+																	<string>decimalSeparator</string>
 																	<string>formatterBehavior</string>
+																	<string>groupingSeparator</string>
 																	<string>negativeFormat</string>
 																	<string>positiveFormat</string>
 																	<string>usesGroupingSeparator</string>
@@ -171,7 +173,9 @@
 																<object class="NSMutableArray" key="dict.values">
 																	<bool key="EncodedWithXMLCoder">YES</bool>
 																	<integer value="1" id="9"/>
+																	<string>,</string>
 																	<integer value="1000"/>
+																	<string>.</string>
 																	<string>-#,##0%</string>
 																	<string>#,##0%</string>
 																	<boolean value="YES"/>
@@ -210,8 +214,8 @@
 															</object>
 															<reference key="NS.max" ref="450704820"/>
 															<nil key="NS.rounding"/>
-															<string key="NS.decimal">.</string>
-															<string key="NS.thousand">,</string>
+															<string key="NS.decimal">,</string>
+															<string key="NS.thousand">.</string>
 															<bool key="NS.hasthousands">YES</bool>
 															<bool key="NS.localized">YES</bool>
 															<bool key="NS.allowsfloats">YES</bool>
@@ -439,14 +443,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
-						<string key="label">add:</string>
-						<reference key="source" ref="415169787"/>
-						<reference key="destination" ref="276394066"/>
-					</object>
-					<int key="connectionID">100040</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
 						<string key="label">remove:</string>
 						<reference key="source" ref="415169787"/>
 						<reference key="destination" ref="177116426"/>
@@ -468,6 +464,30 @@
 						</object>
 					</object>
 					<int key="connectionID">100042</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">createEmployee:</string>
+						<reference key="source" ref="512844837"/>
+						<reference key="destination" ref="276394066"/>
+					</object>
+					<int key="connectionID">100043</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">tableView</string>
+						<reference key="source" ref="512844837"/>
+						<reference key="destination" ref="555862524"/>
+					</object>
+					<int key="connectionID">100044</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">employeeController</string>
+						<reference key="source" ref="512844837"/>
+						<reference key="destination" ref="415169787"/>
+					</object>
+					<int key="connectionID">100045</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -710,7 +730,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">100042</int>
+			<int key="maxID">100045</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -718,6 +738,23 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">MyDocument</string>
 					<string key="superclassName">NSDocument</string>
+					<object class="NSMutableDictionary" key="actions">
+						<string key="NS.key.0">createEmployee:</string>
+						<string key="NS.object.0">id</string>
+					</object>
+					<object class="NSMutableDictionary" key="outlets">
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSMutableArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>employeeController</string>
+							<string>tableView</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>NSArrayController</string>
+							<string>NSTableView</string>
+						</object>
+					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">MyDocument.h</string>
