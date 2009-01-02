@@ -45,5 +45,27 @@
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>UTExportedTypeDeclarations</key>
+	<array>
+		<dict>
+			<key>UTTypeIdentifier</key>
+			<string>com.bignerdranch.raiseman-doc</string>
+			<key>UTTypeDescription</key>
+			<string>RaiseMan Document</string>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.data</string>
+			</array>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>com.apple.ostype</key>
+				<string>rsmn</string>
+				<key>public.filename-extension</key>
+				<array>
+					<string>rsmn</string>
+				</array>
+			</dict>
+		</dict>
+	</array>
 </dict>
 </plist>
