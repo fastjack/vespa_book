@@ -21,6 +21,10 @@
 			</array>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>com.bignerdranch.raiseman-doc</string>
+			</array>
 			<key>NSDocumentClass</key>
 			<string>MyDocument</string>
 		</dict>
@@ -48,14 +52,14 @@
 	<key>UTExportedTypeDeclarations</key>
 	<array>
 		<dict>
-			<key>UTTypeIdentifier</key>
-			<string>com.bignerdranch.raiseman-doc</string>
-			<key>UTTypeDescription</key>
-			<string>RaiseMan Document</string>
 			<key>UTTypeConformsTo</key>
 			<array>
 				<string>public.data</string>
 			</array>
+			<key>UTTypeDescription</key>
+			<string>RaiseMan Document</string>
+			<key>UTTypeIdentifier</key>
+			<string>com.bignerdranch.raiseman-doc</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>com.apple.ostype</key>
