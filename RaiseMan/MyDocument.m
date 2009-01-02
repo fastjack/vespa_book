@@ -222,7 +222,7 @@
 	NSAlert *alert = [NSAlert alertWithMessageText:@"Delete?" 
 									 defaultButton:@"Delete"
 								   alternateButton:@"Cancel" 
-									   otherButton:nil 
+									   otherButton:@"Keep, but no raise"
 						 informativeTextWithFormat:@"Do you really want to delete %d people?", [selectedPeople count]];
 	NSLog(@"Starting alert sheet");
 	[alert beginSheetModalForWindow:[tableView window] 
@@ -242,6 +242,10 @@
 		// The argument to remove: is ignored
 		// The array controller will delete the selected objects
 		[employeeController remove:nil];
+	} else if (choice == NSAlertOtherReturn) {
+		for(Person *p in [employeeController selectedObjects]) {
+			[p setExpectedRaise:0.0];
+		}
 	}
 }
 @end
