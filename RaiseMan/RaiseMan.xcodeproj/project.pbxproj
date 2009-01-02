@@ -12,6 +12,7 @@
 		8493C4450F0E1313006764C7 /* AppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8493C4440F0E1313006764C7 /* AppController.m */; };
 		8493C4490F0E1541006764C7 /* PreferenceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8493C4480F0E1541006764C7 /* PreferenceController.m */; };
 		8493C44D0F0E15BC006764C7 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8493C44C0F0E15BC006764C7 /* Preferences.xib */; };
+		8493C4530F0E1AE1006764C7 /* About.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8493C4520F0E1AE1006764C7 /* About.xib */; };
 		84B182220F0DEA330042940C /* BBall.icns in Resources */ = {isa = PBXBuildFile; fileRef = 84B182210F0DEA330042940C /* BBall.icns */; };
 		84C3A4CA0F0862B600E67D08 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C3A4C90F0862B600E67D08 /* Person.m */; };
 		8D15AC2C0486D014006FF6A4 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2A37F4B9FDCFA73011CA2CEA /* Credits.rtf */; };
@@ -39,6 +40,7 @@
 		8493C4470F0E1541006764C7 /* PreferenceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferenceController.h; sourceTree = "<group>"; };
 		8493C4480F0E1541006764C7 /* PreferenceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferenceController.m; sourceTree = "<group>"; };
 		8493C44C0F0E15BC006764C7 /* Preferences.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Preferences.xib; sourceTree = "<group>"; };
+		8493C4520F0E1AE1006764C7 /* About.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = About.xib; sourceTree = "<group>"; };
 		84B182210F0DEA330042940C /* BBall.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = BBall.icns; sourceTree = "<group>"; };
 		84C3A4C80F0862B600E67D08 /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
 		84C3A4C90F0862B600E67D08 /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 				1DDD58280DA1D0D100B32029 /* MyDocument.xib */,
 				1DDD582A0DA1D0D100B32029 /* MainMenu.xib */,
 				8493C44C0F0E15BC006764C7 /* Preferences.xib */,
+				8493C4520F0E1AE1006764C7 /* About.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -192,6 +195,7 @@
 				1DDD582D0DA1D0D100B32029 /* MainMenu.xib in Resources */,
 				84B182220F0DEA330042940C /* BBall.icns in Resources */,
 				8493C44D0F0E15BC006764C7 /* Preferences.xib in Resources */,
+				8493C4530F0E1AE1006764C7 /* About.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -20,4 +20,12 @@
 	NSLog(@"showing %@", preferenceController);
 	[preferenceController showWindow:self];
 }
+
+- (IBAction)showAboutPanel:(id)sender
+{
+	BOOL success = [NSBundle loadNibNamed:@"About" owner:self];
+	if (!success) {
+		NSLog(@"Loading about panel failed");
+	}
+}
 @end
