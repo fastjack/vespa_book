@@ -51,4 +51,18 @@
 	NSLog(@"applicationShouldOpenUntitledFile:");
 	return [[NSUserDefaults standardUserDefaults] boolForKey:BNREmptyDocKey];
 }
+
+- (id)init
+{
+	[super init];
+	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+	[nc addObserver:self selector:@selector(handleResignActive:) name:NSApplicationDidResignActiveNotification object:nil];
+	NSLog(@"Registered to receive notifications when going inactive");
+	return self;
+}
+
+- (void)handleResignActive:(NSNotification *)note
+{
+	NSBeep();
+}
 @end
