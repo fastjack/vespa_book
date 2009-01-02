@@ -219,11 +219,11 @@
 - (IBAction)removeEmployee:(id)sender
 {
 	NSArray *selectedPeople = [employeeController selectedObjects];
-	NSAlert *alert = [NSAlert alertWithMessageText:@"Delete?" 
-									 defaultButton:@"Delete"
-								   alternateButton:@"Cancel" 
-									   otherButton:@"Keep, but no raise"
-						 informativeTextWithFormat:@"Do you really want to delete %d people?", [selectedPeople count]];
+	NSAlert *alert = [NSAlert alertWithMessageText:NSLocalizedString(@"DELETE", @"Delete")
+									 defaultButton:NSLocalizedString(@"DELETE", @"Delete")
+								   alternateButton:NSLocalizedString(@"CANCEL", @"Cancel")
+									   otherButton:NSLocalizedString(@"KEEP_BUT_NO_RAISE", @"Keep, but no raise")
+						 informativeTextWithFormat:NSLocalizedString(@"SURE_DELETE", @"Do you really want to delete %d people?"), [selectedPeople count]];
 	NSLog(@"Starting alert sheet");
 	[alert beginSheetModalForWindow:[tableView window] 
 					  modalDelegate:self

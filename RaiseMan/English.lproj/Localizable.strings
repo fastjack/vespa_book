@@ -1,0 +1,4 @@
+"DELETE" = "Delete";
+"SURE_DELETE" = "Do you really want to delete %d people";
+"CANCEL" = "Cancel";
+"KEEP_BUT_NO_RAISE" = "Keep, but no raise";

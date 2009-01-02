@@ -1,0 +1,4 @@
+"DELETE" = "Löschen";
+"SURE_DELETE" = "Möchten Sie wirklich %d Angestellte löschen?";
+"CANCEL" = "Abbrechen";
+"KEEP_BUT_NO_RAISE" = "Behalten, aber keine Erhöhung";
