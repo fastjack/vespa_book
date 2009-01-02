@@ -212,6 +212,8 @@
 - (void)handleColorChange:(NSNotification *)note
 {
 	NSLog(@"Received notification: %@", note);
+	NSColor *color = [[note userInfo] objectForKey:@"color"];
+	[tableView setBackgroundColor:color];
 }
 
 @end
