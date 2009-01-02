@@ -45,4 +45,10 @@
 	[[NSUserDefaults standardUserDefaults] registerDefaults:defaultValues];
 	NSLog(@"registered defaults: %@", defaultValues);
 }
+
+- (BOOL)applicationShouldOpenUntitledFile:(NSApplication *)sender
+{
+	NSLog(@"applicationShouldOpenUntitledFile:");
+	return [[NSUserDefaults standardUserDefaults] boolForKey:BNREmptyDocKey];
+}
 @end
