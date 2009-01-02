@@ -53,4 +53,18 @@ NSString * const BNREmptyDocKey = @"EmptyDocumentFlag";
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	[defaults setBool:state	forKey:BNREmptyDocKey];
 }
+
+- (IBAction)resetPreferences:(id)sender
+{
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	
+	// Remove the user's defaults
+	[defaults removeObjectForKey:BNRTableBgColorKey];
+	[defaults removeObjectForKey:BNREmptyDocKey];
+	
+	// Update the settings displayed in the preference panel
+	[colorWell setColor:[self tableBgColor]];
+	[checkbox setState:[self emptyDoc]];
+}
+
 @end
