@@ -216,4 +216,33 @@
 	[tableView setBackgroundColor:color];
 }
 
+- (IBAction)removeEmployee:(id)sender
+{
+	NSArray *selectedPeople = [employeeController selectedObjects];
+	NSAlert *alert = [NSAlert alertWithMessageText:@"Delete?" 
+									 defaultButton:@"Delete"
+								   alternateButton:@"Cancel" 
+									   otherButton:nil 
+						 informativeTextWithFormat:@"Do you really want to delete %d people?", [selectedPeople count]];
+	NSLog(@"Starting alert sheet");
+	[alert beginSheetModalForWindow:[tableView window] 
+					  modalDelegate:self
+					 didEndSelector:@selector(alertEnded:code:context:) 
+						contextInfo:NULL];
+}
+
+- (void)alertEnded:(NSAlert *)alert
+			  code:(int)choice
+		   context:(void *)v
+{
+	NSLog(@"Alert sheet ended");
+	// If the user chose "Delete", the the array controller to
+	// delete the people
+	if (choice == NSAlertDefaultReturn) {
+		// The argument to remove: is ignored
+		// The array controller will delete the selected objects
+		[employeeController remove:nil];
+	}
+}
 @end
+ 
