@@ -13,7 +13,10 @@
 	NSBezierPath *path;
 	NSImage *image;
 	float opacity;
+	NSPoint downPoint;
+	NSPoint currentPoint;
 }
 - (NSPoint)randomPoint;
 - (void)setImage:(NSImage *)newImage;
+- (NSRect)currentRect;
 @end
