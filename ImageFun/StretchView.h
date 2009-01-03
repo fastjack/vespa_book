@@ -10,7 +10,7 @@
 
 
 @interface StretchView : NSView {
-
+	NSBezierPath *path;
 }
-
+- (NSPoint)randomPoint;
 @end
