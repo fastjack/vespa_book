@@ -11,6 +11,9 @@
 
 @interface StretchView : NSView {
 	NSBezierPath *path;
+	NSImage *image;
+	float opacity;
 }
 - (NSPoint)randomPoint;
+- (void)setImage:(NSImage *)newImage;
 @end
