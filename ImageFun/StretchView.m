@@ -25,9 +25,12 @@
 	NSPoint p = [self randomPoint];
 	[path moveToPoint:p];
 	int i;
+	NSPoint c1, c2;
 	for (i = 0; i < 15; i++) {
 		p = [self randomPoint];
-		[path lineToPoint:p];
+		c1 = [self randomPoint]; // Control point 1 for bezier curve
+		c2 = [self randomPoint];
+		[path curveToPoint:p controlPoint1:c1 controlPoint2:c2];
 	}
 	[path closePath];
     return self;
