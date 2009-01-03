@@ -56,7 +56,7 @@
 	
 	// Draw the path in white
 	[[NSColor whiteColor] set];
-	[path stroke];
+	[path fill];
 }
 
 @end
