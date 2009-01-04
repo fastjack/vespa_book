@@ -8,8 +8,19 @@
 
 
 #import <Cocoa/Cocoa.h>
+@class DrawingView;
+@class Shape;
 
 @interface MyDocument : NSDocument
 {
+	IBOutlet DrawingView *drawingView;
+	NSMutableArray *shapes;
+	NSUndoManager *undo;
 }
+//- (NSMutableArray *)shapes;
+//- (void)setShapes:(NSMutableArray *)shapes;
+@property(readwrite, copy) NSMutableArray *shapes;
+
+- (void)addShape:(Shape *)shape;
+- (void)removeLastShape;
 @end
