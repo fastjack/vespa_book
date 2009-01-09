@@ -128,9 +128,18 @@
 - (void)prepareAttributes
 {
 	attributes = [[NSMutableDictionary alloc] init];
+	NSShadow *shadow;
+	NSSize shadowOffset;
+	shadow = [[NSShadow alloc] init];
+	shadowOffset.width = 5.0;
+	shadowOffset.height = -5.0;
+	[shadow setShadowOffset:shadowOffset];
+	[shadow setShadowBlurRadius:4.0];
+	[shadow setShadowColor:[NSColor grayColor]];
 	
 	[attributes setObject:[NSFont fontWithName:@"Helvetica" size:75] forKey:NSFontAttributeName];
 	[attributes setObject:[NSColor redColor] forKey:NSForegroundColorAttributeName];
+	[attributes setObject:shadow forKey:NSShadowAttributeName];
 }
 
 - (void)drawStringCenteredIn:(NSRect)r
