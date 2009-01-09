@@ -12,11 +12,11 @@
 @implementation Shape
 @synthesize bounds;
 
-- (id)initWithBounds:(NSRect)bounds
+- (id)initWithBounds:(NSRect)newBounds
 {
 	self = [super init];
 	if (self) {
-		[self setBounds:bounds];
+		[self setBounds:newBounds];
 	}
 	return self;
 }
