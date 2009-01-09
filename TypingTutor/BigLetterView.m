@@ -199,10 +199,11 @@
 - (void)writeToPasteboard:(NSPasteboard *)pb
 {
 	// Declare types
-	[pb declareTypes:[NSArray arrayWithObject:NSStringPboardType] owner:self];
+	[pb declareTypes:[NSArray arrayWithObjects:NSStringPboardType, NSPDFPboardType, nil] owner:self];
 	
 	// Copy data to the pasteboard
 	[pb setString:string forType:NSStringPboardType];
+	[pb setData:[self dataWithPDFInsideRect:[self bounds]] forType:NSPDFPboardType];
 }
 
 - (BOOL)readFromPasteboard:(NSPasteboard *)pb
