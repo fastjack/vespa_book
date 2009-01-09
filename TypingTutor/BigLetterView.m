@@ -195,4 +195,50 @@
 		[a runModal];
 	}
 }
+
+- (void)writeToPasteboard:(NSPasteboard *)pb
+{
+	// Declare types
+	[pb declareTypes:[NSArray arrayWithObject:NSStringPboardType] owner:self];
+	
+	// Copy data to the pasteboard
+	[pb setString:string forType:NSStringPboardType];
+}
+
+- (BOOL)readFromPasteboard:(NSPasteboard *)pb
+{
+	// Is there a string on the pasteboard?
+	NSArray *types = [pb types];
+	if ([types containsObject:NSStringPboardType]) {
+		// Read the string from the pasteboard
+		NSString *value = [pb stringForType:NSStringPboardType];
+		
+		// Our view can handly only one letter
+		if ([value length] == 1) {
+			[self setString:value];
+			return YES;
+		}
+	}
+	return NO;
+}
+
+- (IBAction)cut:(id)sender
+{
+	[self copy:sender];
+	[self setString:@""];
+}
+
+- (IBAction)copy:(id)sender
+{
+	NSPasteboard *pb = [NSPasteboard generalPasteboard];
+	[self writeToPasteboard:pb];
+}
+
+- (IBAction)paste:(id)sender
+{
+	NSPasteboard *pb = [NSPasteboard generalPasteboard];
+	if (![self readFromPasteboard:pb]) {
+		NSBeep();
+	}
+}
 @end
