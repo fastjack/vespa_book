@@ -25,7 +25,7 @@
 {
 	[bgColor release];
 	[string release];
-	[super release];
+	[super dealloc];
 }
 
 # pragma mark Accessors
