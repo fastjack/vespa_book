@@ -137,7 +137,19 @@
 	[shadow setShadowBlurRadius:4.0];
 	[shadow setShadowColor:[NSColor grayColor]];
 	
-	[attributes setObject:[NSFont fontWithName:@"Helvetica" size:75] forKey:NSFontAttributeName];
+	NSFontManager *fontManager = [NSFontManager sharedFontManager];
+	NSFont *font = [NSFont fontWithName:@"Helvetica" size: 75];
+	NSFontTraitMask fontTrait = 0;
+	
+	if ([bold state])
+		fontTrait |= NSBoldFontMask;
+	if ([italic state])
+		fontTrait |= NSItalicFontMask;
+	if (fontTrait != 0) {
+		font = [fontManager convertFont:font toHaveTrait:fontTrait];
+	}
+	
+	[attributes setObject:font forKey:NSFontAttributeName];
 	[attributes setObject:[NSColor redColor] forKey:NSForegroundColorAttributeName];
 	[attributes setObject:shadow forKey:NSShadowAttributeName];
 }
@@ -148,6 +160,7 @@
 	NSPoint strOrigin;
 	strOrigin.x = r.origin.x + (r.size.width - strSize.width)/2;
 	strOrigin.y = r.origin.y + (r.size.height - strSize.height)/2;
+	[self prepareAttributes];
 	[string drawAtPoint:strOrigin withAttributes:attributes];
 }
 
@@ -164,8 +177,8 @@
 }
 
 - (void)didEnd:(NSSavePanel *)sheet
-returnCode:(int)code
-contextInfo:(void *)contextInfo
+	returnCode:(int)code
+   contextInfo:(void *)contextInfo
 {
 	if (code != NSOKButton)
 		return;

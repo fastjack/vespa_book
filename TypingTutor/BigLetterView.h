@@ -13,6 +13,8 @@
 	NSColor *bgColor;
 	NSString *string;
 	NSMutableDictionary *attributes;
+	IBOutlet NSButton *bold;
+	IBOutlet NSButton *italic;
 }
 @property (retain, readwrite) NSColor *bgColor;
 @property (copy, readwrite) NSString *string;
