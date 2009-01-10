@@ -19,7 +19,8 @@
 	NSLog(@"initializing view");
 	[self prepareAttributes];
 	bgColor = [[NSColor yellowColor] retain];
-	string = @" ";
+	string = @"";
+	[self registerForDraggedTypes:[NSArray arrayWithObject:NSStringPboardType]];
     return self;
 }
 
@@ -62,7 +63,18 @@
 
 - (void)drawRect:(NSRect)rect {
     NSRect bounds = [self bounds];
-	[bgColor set];
+	// Draw gradient background if highlighted
+	if (highlighted) {
+		NSGradient *gr;
+		gr = [[NSGradient alloc] initWithStartingColor:[NSColor whiteColor]
+										   endingColor:bgColor];
+		[gr drawInRect:bounds relativeCenterPosition:NSZeroPoint];
+		[gr release];
+	} else {
+		[bgColor set];
+		[NSBezierPath fillRect:bounds];
+	}
+	
 	[NSBezierPath fillRect:bounds];
 	[self drawStringCenteredIn:bounds];
 	
@@ -315,5 +327,48 @@
 	if (operation == NSDragOperationDelete) {
 		[self setString:@""];
 	}
+}
+
+#pragma mark Dragging Destination
+
+- (NSDragOperation)draggingEntered:(id <NSDraggingInfo>)sender
+{
+	NSLog(@"draggingEntered:");
+	if ([sender draggingSource] == self) {
+		return NSDragOperationNone;
+	}
+	
+	highlighted = YES;
+	[self setNeedsDisplay:YES];
+	return NSDragOperationCopy;
+}
+
+- (void)draggingExited:(id <NSDraggingInfo>)sender
+{
+	NSLog(@"draggingExited:");
+	highlighted = NO;
+	[self setNeedsDisplay:YES];
+}
+
+- (BOOL)prepareForDragOperation:(id <NSDraggingInfo>)sender
+{
+	return YES;
+}
+
+- (BOOL)performDragOperation:(id <NSDraggingInfo>)sender
+{
+	NSPasteboard *pb = [sender draggingPasteboard];
+	if (![self readFromPasteboard:pb]) {
+		NSLog(@"Error: Could not read from dragging pasteboard");
+		return NO;
+	}
+	return YES;
+}
+
+- (void)concludeDragOperation:(id <NSDraggingInfo>)sender
+{
+	NSLog(@"concludeDragOperation:");
+	highlighted = NO;
+	[self setNeedsDisplay:YES];
 }
 @end
