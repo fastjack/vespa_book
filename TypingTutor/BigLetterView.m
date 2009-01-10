@@ -243,7 +243,7 @@
 
 - (NSDragOperation)draggingSourceOperationMaskForLocal:(BOOL)isLocal
 {
-	return NSDragOperationCopy;
+	return NSDragOperationCopy | NSDragOperationDelete;
 }
 
 - (void)mouseDown:(NSEvent *)event
@@ -306,5 +306,14 @@
 			 source:self
 		  slideBack:YES];
 	[anImage release];
+}
+
+- (void)draggedImage:(NSImage *)image
+			 endedAt:(NSPoint)screenPoint
+		   operation:(NSDragOperation)operation
+{
+	if (operation == NSDragOperationDelete) {
+		[self setString:@""];
+	}
 }
 @end
