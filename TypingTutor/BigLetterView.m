@@ -371,4 +371,14 @@
 	highlighted = NO;
 	[self setNeedsDisplay:YES];
 }
+
+- (NSDragOperation)draggingUpdated:(id <NSDraggingInfo>)sender
+{
+	NSDragOperation op = [sender draggingSourceOperationMask];
+	NSLog(@"operation mask = %d", op);
+	if ([sender draggingSource] == self) {
+		return NSDragOperationNone;
+	}
+	return NSDragOperationCopy;
+}
 @end
