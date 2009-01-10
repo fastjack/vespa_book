@@ -15,6 +15,7 @@
 	NSMutableDictionary *attributes;
 	IBOutlet NSButton *bold;
 	IBOutlet NSButton *italic;
+	NSEvent *mouseDownEvent;
 }
 @property (retain, readwrite) NSColor *bgColor;
 @property (copy, readwrite) NSString *string;
