@@ -91,6 +91,11 @@
 	NSPoint p = [event locationInWindow];
 	downPoint = [self convertPoint:p fromView:nil];
 	currentPoint = downPoint;
+	timer = [[NSTimer scheduledTimerWithTimeInterval:0.1
+											  target:self
+											selector:@selector(scrollView:)
+											userInfo:nil
+											 repeats:YES] retain];
 	[self setNeedsDisplay:YES];
 }
 
@@ -98,7 +103,7 @@
 {
 	NSPoint p = [event locationInWindow];
 	currentPoint = [self convertPoint:p fromView:nil];
-	[self autoscroll:event];
+	// [self autoscroll:event];
 	[self setNeedsDisplay:YES];
 }
 
@@ -106,6 +111,9 @@
 {
 	NSPoint p = [event locationInWindow];
 	currentPoint = [self convertPoint:p fromView:nil];
+	[timer invalidate];
+	[timer release];
+	timer = nil;
 	[self setNeedsDisplay:YES];
 }
 
@@ -132,5 +140,11 @@
 {
 	opacity = x;
 	[self setNeedsDisplay:YES];
+}
+
+- (void)scrollView:(NSTimer *)aTimer
+{
+	NSEvent *e = [NSApp currentEvent];
+	[self autoscroll:e];
 }
 @end

@@ -15,6 +15,7 @@
 	float opacity;
 	NSPoint downPoint;
 	NSPoint currentPoint;
+	NSTimer *timer;
 }
 - (NSPoint)randomPoint;
 - (void)setImage:(NSImage *)newImage;
