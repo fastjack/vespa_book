@@ -55,7 +55,7 @@
 	
 	// Convert to an RGB Color Space
 	NSColor *color;
-	color = [obj colorUsingColorSpace:NSCalibratedRGBColorSpace];
+	color = [obj colorUsingColorSpaceName:NSCalibratedRGBColorSpace];
 	
 	// Get components as floats between 0 and 1
 	CGFloat red, green, blue;
