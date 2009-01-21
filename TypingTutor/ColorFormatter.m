@@ -152,4 +152,21 @@
 	}
 	return YES;
 }
+
+- (NSAttributedString *)attributedStringForObjectValue:(id)anObj
+								 withDefaultAttributes:(NSDictionary *)attributes
+{
+	NSMutableDictionary *md = [attributes mutableCopy];
+	NSString *match = [self stringForObjectValue:anObj];
+	if (match) {
+		[md setObject:anObj forKey:NSForegroundColorAttributeName];
+	} else {
+		match = @"";
+	}
+	NSAttributedString *atString;
+	atString = [[NSAttributedString alloc] initWithString:match attributes:md];
+	[md release];
+	[atString autorelease];
+	return atString;
+}
 @end
