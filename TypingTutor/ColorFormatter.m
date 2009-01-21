@@ -102,22 +102,54 @@
 	}
 }
 
-- (BOOL)isPartialStringValid:(NSString *)partial
-newEditingString:(NSString **)newString
-errorDescription:(NSString **)error
+//- (BOOL)isPartialStringValid:(NSString *)partial
+//newEditingString:(NSString **)newString
+//errorDescription:(NSString **)error
+//{
+//	// Zero-length strings are OK
+//	if ([partial length] == 0) {
+//		return YES;
+//	}
+//	NSString *match = [self firstColorKeyForPartialString:partial];
+//	if (match) {
+//		return YES;
+//	} else {
+//		if (error) {
+//			*error = @"No such color";
+//		}
+//		return NO;
+//	}
+//}
+
+- (BOOL)isPartialStringValid:(NSString **)partial
+	   proposedSelectedRange:(NSRange *)selPtr
+			  originalString:(NSString *)origString
+	   originalSelectedRange:(NSRange)origSel
+			errorDescription:(NSString **)error
 {
-	// Zero-length strings are OK
-	if ([partial length] == 0) {
+	// Zero-length strings are fine
+	if ([*partial length] == 0) {
 		return YES;
 	}
-	NSString *match = [self firstColorKeyForPartialString:partial];
-	if (match) {
-		return YES;
-	} else {
-		if (error) {
-			*error = @"No such color";
-		}
+	NSString *match = [self firstColorKeyForPartialString:*partial];
+	// No color match?
+	if (!match) {
 		return NO;
 	}
+	
+	// If this would no move the beginning of the selection, it is a delete
+	if (origSel.location == selPtr->location) {
+		return YES;
+	}
+	
+	// If the partial string is shorter than the match,
+	// provide the match and set the selection
+	if ([match length] != [*partial length]) {
+		selPtr->location = [*partial length];
+		selPtr->length = [match length] - selPtr->location;
+		*partial = match;
+		return NO;
+	}
+	return YES;
 }
 @end
