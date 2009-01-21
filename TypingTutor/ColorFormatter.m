@@ -101,4 +101,23 @@
 		return NO;
 	}
 }
+
+- (BOOL)isPartialStringValid:(NSString *)partial
+newEditingString:(NSString **)newString
+errorDescription:(NSString **)error
+{
+	// Zero-length strings are OK
+	if ([partial length] == 0) {
+		return YES;
+	}
+	NSString *match = [self firstColorKeyForPartialString:partial];
+	if (match) {
+		return YES;
+	} else {
+		if (error) {
+			*error = @"No such color";
+		}
+		return NO;
+	}
+}
 @end
