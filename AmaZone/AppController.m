@@ -77,8 +77,35 @@
 	[progress stopAnimation:nil];
 }
 
+- (NSString *)stringForPath:(NSString *)xp ofNode:(NSXMLNode *)n
+{
+	NSError *error;
+	NSArray *nodes = [n nodesForXPath:xp error:&error];
+	if (!nodes) {
+		NSAlert *alert = [NSAlert alertWithError:error];
+		[alert runModal];
+		return nil;
+	}
+	if ([nodes count] == 0) {
+		return nil;
+	} else {
+		return [[nodes objectAtIndex:0] stringValue];
+	}
+}
+
+#pragma mark TableView data source methods
+
 - (int)numberOfRowsInTableView:(NSTableView *)tv
 {
-	return 0;
+	return [itemNodes count];
+}
+
+- (id)tableView:(NSTableView *)tv
+	objectValueForTableColumn:(NSTableColumn *)tableColumn
+						  row:(int)row
+{
+	NSXMLNode *node = [itemNodes objectAtIndex:row];
+	NSString *xPath = [tableColumn identifier];
+	return [self stringForPath:xPath ofNode:node];
 }
 @end
