@@ -45,7 +45,9 @@
 	[self setFrame:newFrame];
 	
 	// How many lines per page?
-	linesPerPage = pageRect.size.height / lineHeight;
+	// Display one line less per page to leave some space
+	// for page numbers
+	linesPerPage = pageRect.size.height / lineHeight - 1;
 	
 	// Pages are 1-based
 	range->location = 1;
@@ -79,12 +81,20 @@
 {
 	NSRect nameRect;
 	NSRect raiseRect;
+	NSRect pageNumberRect;
 	raiseRect.size.height = nameRect.size.height = lineHeight;
 	nameRect.origin.x = pageRect.origin.x;
 	nameRect.size.width = 200.0;
 	raiseRect.origin.x = NSMaxX(nameRect);
 	raiseRect.size.width = 100.0;
+	pageNumberRect.size.height = lineHeight;
+	pageNumberRect.origin.x = pageRect.origin.x + pageRect.size.width - 200.0;		// 200 (units) from the right margin
+	pageNumberRect.origin.y = pageRect.origin.y + pageRect.size.height - lineHeight;
 	
+	NSString *pageNumberString = [NSString stringWithFormat:@"Page %2d", currentPage + 1];
+	// NSLog(@"%@", pageNumberString);
+	// NSLog(@"x,y-h,w: %3d,%3d-%3d,%3d", pageNumberRect.origin.x, pageNumberRect.origin.y, pageNumberRect.size.height, pageNumberRect.size.width);
+	[pageNumberString drawInRect:pageNumberRect withAttributes:attributes];
 	int i;
 	for (i=0; i<linesPerPage; i++) {
 		int index = (currentPage * linesPerPage) + i;
