@@ -108,4 +108,23 @@
 	NSString *xPath = [tableColumn identifier];
 	return [self stringForPath:xPath ofNode:node];
 }
+
+- (void)awakeFromNib
+{
+	[tableView setDoubleAction:@selector(openItem:)];
+	[tableView setTarget:self];
+}
+
+- (void)openItem:(id)sender
+{
+	int row = [tableView clickedRow];
+	if (row == -1) {
+		return;
+	}
+	
+	NSXMLNode *clickedItem = [itemNodes objectAtIndex:row];
+	NSString *urlString = [self stringForPath:@"DetailPageURL" ofNode:clickedItem];
+	NSURL *url = [NSURL URLWithString:urlString];
+	[[NSWorkspace sharedWorkspace] openURL:url];
+}
 @end
