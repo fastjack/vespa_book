@@ -7,8 +7,13 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "ManagingViewController.h"
 
 @interface MyDocument : NSPersistentDocument {
+	IBOutlet NSBox *box;
+	IBOutlet NSPopUpButton *popUp;
+	NSMutableArray *viewControllers;
 }
-
+- (IBAction)changeViewController:(id)sender;
+- (void)displayViewController:(ManagingViewController *)vc;
 @end
