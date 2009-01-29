@@ -48,6 +48,23 @@
 	}
 	// Put the view in the box
 	NSView *v = [vc view];
+	
+	//Compute the new windows frame
+	NSSize currentSize = [[box contentView] frame].size;
+	NSSize newSize = [v frame].size;
+	float deltaWidth = newSize.width - currentSize.width;
+	float deltaHeight = newSize.height - currentSize.height;
+	NSRect windowFrame = [w frame];
+	windowFrame.size.height += deltaHeight;
+	windowFrame.origin.y -= deltaHeight;
+	windowFrame.size.width += deltaWidth;
+	
+	// Clear the box for resizing
+	[box setContentView:nil];
+	[w setFrame:windowFrame
+		display:YES
+		animate:YES];
+	
 	[box setContentView:v];
 }
 
